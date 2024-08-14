@@ -3,6 +3,17 @@ import itertools
 from itertools import product
 
 
+def get_matching_event(event_condition, sample_space):
+    return set([outcome for outcome in sample_space if event_condition(outcome)])
+
+# Computing event probabilities
+def compute_probability(event_condition, generic_sample_space):
+    # The compute_probability function extracts the event associated with
+    # an inputted event condition to compute its probability
+    event = get_matching_event(event_condition, generic_sample_space)
+    # Probability is equal to event size divided by sample space size
+    # print(f"{event}: {len(event)} / {generic_sample_space}: {len(generic_sample_space)}")
+    return len(event) / len(generic_sample_space)
 
 def is_in_interval(number, minimum, maximum):
     return minimum <= number <= maximum
